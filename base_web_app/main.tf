@@ -21,21 +21,29 @@ data "aws_ssm_parameter" "ami" {
 ##################################################################################
 
 # NETWORKING #
-resource "aws_vpc" "vpc" {
-  cidr_block           = "10.0.0.0/16"
-  enable_dns_hostnames = true
-
+resource "aws_vpc" "ViVPC" {
+  cidr_block           = "10.10.0.0/16"
 }
-
-resource "aws_internet_gateway" "igw" {
-  vpc_id = aws_vpc.vpc.id
-
-}
-
-resource "aws_subnet" "subnet1" {
+resource "aws_subnet" "pubSub" {
+  vpc_id                  = aws_vpc.ViVPC.id
   cidr_block              = "10.0.0.0/24"
-  vpc_id                  = aws_vpc.vpc.id
-  map_public_ip_on_launch = true
+  tag = {
+    name = "pubSub1"
+  }
+}
+resource "aws_subnet" "pvtSub" {
+  vpc_id                  = aws_vpc.ViVPC.id
+  cidr_block              = "10.0.1.0/24"
+  tag = {
+    name = "pvtub1"
+  }
+}
+#IGW#
+resource "aws_internet_gateway" "igw1" {
+  vpc_id = aws_vpc.ViVPC.id
+  tag = {
+    name = "IGWViVPC"
+  }
 }
 
 # ROUTING #
