@@ -1,3 +1,4 @@
+updated
 # Getting-Started-Terraform
 
 Welcome to Terraform - Getting Started.  These exercise files are meant to accompany my course on [Pluralsight](https://app.pluralsight.com/library/courses/terraform-getting-started).  The course was developed using version 1.0.8 of Terraform. Since the GA of version 1.0, HashiCorp has committed to no breaking changes until version 2.0. All the exercises in this course should be valid as long as you are using Terraform in the 1.X version family. The modules and providers in this course have no such guarantee, so I have pinned the version where applicable.
